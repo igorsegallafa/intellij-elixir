@@ -169,11 +169,7 @@ private fun setupConfigurationFromContextImpl(configuration: Configuration,
         }
 
 private fun workingDirectory(directory: PsiDirectory, basePath: String?): String? =
-        if (directory.findFile("mix.exs") != null) {
-            directory.virtualFile.path
-        } else {
-            directory.parent?.let { workingDirectory(it, basePath) } ?: basePath
-        }
+        directory.parent?.let { workingDirectory(it, basePath) } ?: basePath
 
 private fun workingDirectory(element: PsiElement, basePath: String?): String? =
         when (element) {
